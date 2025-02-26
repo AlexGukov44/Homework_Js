@@ -42,7 +42,7 @@ console.log(typeof combined);
 ответ ( string )
 
 
-/* ДЗ 3) */
+/* ДЗ 4) */
 
 let user = {
     firstName = "Александр",
