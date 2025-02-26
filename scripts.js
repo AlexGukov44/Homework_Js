@@ -23,14 +23,14 @@ console.log(typeof user);
 ответ ( object )
 
 
-functionsauHello() { console.log("Hello!");}
+functionsayHello() { console.log("Hello!");}
 console.log(typeof sayHello);
 
 ответ ( SyntaxError: Unexpected token '{' )
 
 /* если исправить имя на одинаковое то: */
 
-function sauHello() { console.log("Hello!");}
+function sayHello() { console.log("Hello!");}
 console.log(typeof sayHello);
 
 ответ ( undefined )
