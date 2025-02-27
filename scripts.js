@@ -1,56 +1,32 @@
-/*  ДЗ 1) */
+// ДЗ №1
 
-let userName = "Александр";
-let userAge = 40;
-let pet = false;
-let favoriteBook = null;
+( + , - , * , / , % ) => арифметические операторы 
+== означет РОВНО(без учёта типа данных) , === означет строго РОВНО(с учетом типа данных)
+&& => проверяет одно либо все условия, если все верны возврощает TRUE 
 
+// ДЗ №2
 
+let a = 8;
 
-/* ДЗ 2) */
+console.log(a % 3); // 2
+console.log(a * 2); // 16
+console.log(a + 10); // 18
 
-"JavaScript" = typeof (String);
-2024 = typeof (Number);
-true = typeof (Boolean);
-null = typeof (null) (отсутствие значения);
-undefined = typeof (Undefined) (значение для необьявленых переменных);
+// ДЗ №3
 
-/* ДЗ 3) */
+let isRainy = true;
+let hasCoat = false;
 
-let user = {name:"Alice", age:30};
-console.log(typeof user);
-
-ответ ( object )
-
-
-functionsayHello() { console.log("Hello!");}
-console.log(typeof sayHello);
-
-ответ ( SyntaxError: Unexpected token '{' )
-
-/* если исправить имя на одинаковое то: */
-
-function sayHello() { console.log("Hello!");}
-console.log(typeof sayHello);
-
-ответ ( undefined )
+console.log(isRainy && !hasCoat); // true
+console.log(isRainy || !hasCoat); // true
+console.log(!isRainy);            // false
 
 
-let combined = "Age:" + 25; 
-console.log(typeof combined);
+// ДЗ №4
 
-ответ ( string )
-
-
-/* ДЗ 4) */
-
-let user = {
-    firstName = "Александр",
-    lastName = "Жуков",
-    age = 40,
-    isEmployed = true,
-    contact = "mail@email",
-    phone = undefined, 
-};
-const uniqueId = Sumbol('id');
-user uniqueId = 13;
+let age = prompt("укажите свой возраст", "0");
+if (age < 18) {
+    alert("доступ закрыт");
+} if (age >= 18) {
+    alert("доступ открыт");
+}
