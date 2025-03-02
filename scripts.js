@@ -1,32 +1,55 @@
-// ДЗ №1
+//  ДЗ № 1
 
-( + , - , * , / , % ) => арифметические операторы 
-== означет РОВНО(без учёта типа данных) , === означет строго РОВНО(с учетом типа данных)
-&& => проверяет одно либо все условия, если все верны возврощает TRUE 
-
-// ДЗ №2
-
-let a = 8;
-
-console.log(a % 3); // 2
-console.log(a * 2); // 16
-console.log(a + 10); // 18
-
-// ДЗ №3
-
-let isRainy = true;
-let hasCoat = false;
-
-console.log(isRainy && !hasCoat); // true
-console.log(isRainy || !hasCoat); // true
-console.log(!isRainy);            // false
-
-
-// ДЗ №4
-
-let age = prompt("укажите свой возраст", "0");
-if (age < 18) {
-    alert("доступ закрыт");
-} if (age >= 18) {
-    alert("доступ открыт");
+function combineValue(number, text) {
+    if (number <= 0){
+        return "Некоррктное значение";
+    } else if (number == 1){
+        return text = "1 яблоко";
+    } else {
+        return number + " " + text;
+    }
 }
+
+console.log(combineValue(5, "яблок")); // 5 яблок   и добавил отработку варианта с 1 яблоком :)
+
+
+// ДЗ № 2
+
+function doubleNumber(number) {
+    return number * 2;
+}
+
+console.log(doubleNumber(6)); // 12     6 умноженое на 2 
+
+
+// ДЗ № 3
+
+function convertToNumber(text) {
+    return Number(text);
+}
+
+console.log(convertToNumber("666"));  // тут происходит магия, текст становится числом )) (но только числовое значение)
+
+
+// ДЗ № 4
+
+numbers = [5, 4, 9]; // либо = [] пустой 
+
+
+function findMaxNumber(numbers) {
+    if (numbers.length === 0) {
+        return "массив пустой";
+    }
+    return Math.max(...numbers);
+}
+
+let maxNumber = findMaxNumber(numbers);
+if (maxNumber === "массив пустой") {
+    console.log("массив пустой");
+} else {
+    console.log("самое большое число в массиве = " + maxNumber);
+};
+ // 9 либо ПУСТОЙ   
+
+ даааа вот тут конечно пришлось по копатся в интернете. ))
+ 

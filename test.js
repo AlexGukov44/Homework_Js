@@ -1,3 +1,4 @@
+/*
 let a = 10;
 let b = 4;
 let c = 2
@@ -36,7 +37,7 @@ console.log(a + b > x + z);  // (10 + 4) > (10 + 5)
 /* && => И   (проверяет все уловия и возвращает TRUE если они верны)
    || => ИЛИ (проверяет все условия и возвращает TRUE если хотя бы одно верно)
    !  => НЕ  (меняет значение на противоположное )
-*/
+
 
 let lessons = true;
 let time = false;
@@ -75,3 +76,50 @@ if ((keys && phone) && ironOff) {
 } else {
     console.log("не выходите из дома");
 }
+
+*/
+
+// 5 урок (функции)
+
+function sayHello() {
+    console.log("привет!");
+}
+
+// вызов функции 
+sayHello();
+
+function welcomeUser(user) {
+    console.log("привет," + user + "!");
+}
+
+// вызов функции с аргументом 
+welcomeUser("Наташа");
+
+
+
+function addNumbers(a, d) {
+    console.log(a + d);
+}
+
+addNumbers(3, 7);
+addNumbers(2527, 8986);
+
+
+function sumNumbers(c, d) {
+    return c + d;
+}
+
+let sum = sumNumbers(5, 7);
+console.log(sum);
+
+
+
+
+function calcArea(width, height) {
+    if (width <= 0 || height <= 0) {
+        return "данные не корректны";
+    }
+    return width * height;
+}
+// return останавливает работу функции 
+console.log(calcArea(5, 10));
