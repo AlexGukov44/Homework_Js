@@ -77,7 +77,6 @@ if ((keys && phone) && ironOff) {
     console.log("не выходите из дома");
 }
 
-*/
 
 // 5 урок (функции)
 
@@ -123,3 +122,23 @@ function calcArea(width, height) {
 }
 // return останавливает работу функции 
 console.log(calcArea(5, 10));
+
+*/
+
+// урок № 6 
+
+for (let i = 0; i < 5; i++) {
+    console.log(`количество шагов: ${i}`);
+}
+
+let counter = 0;
+while (counter < 5) {
+    console.log(`счетчик: ${counter}`);
+    counter++;
+}
+
+let number = 10;
+do {
+    console.log(`число: ${number}`);
+    number++;
+} while(number < 5);
