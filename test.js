@@ -123,7 +123,7 @@ function calcArea(width, height) {
 // return останавливает работу функции 
 console.log(calcArea(5, 10));
 
-*/
+
 
 // урок № 6 
 
@@ -142,3 +142,104 @@ do {
     console.log(`число: ${number}`);
     number++;
 } while(number < 5);
+
+*/
+
+// урок №7
+
+let numbers = [1, 2, 3, 4, 5, 6];   // массив чисел 
+
+let fruits = ["яблоко", "апельсин", "манго"];  // массив строк
+fruits[2] = "банан";
+
+let mixed = [2, "яблоко", true];    // масив с разными типами 
+
+console.log(numbers[0]);
+console.log(fruits[2]);
+console.log(mixed[1]);
+
+// push, unshift, indexOf, includes, forEach, map, filter, sort, join
+// pop - удаляет последний элемент
+// shift - удаляет первый элемент 
+
+let vegetables = ["огурец", "картошка", "баклажан"];
+vegetables.push("морковь");   // добавить в конец
+vegetables.unshift("чеснок"); // добавить в начало 
+
+
+console.log(vegetables);
+console.log(vegetables.join(". "));   // обьединяет ( запятая добавлена как рпзделитель между элементами)
+console.log(vegetables.indexOf("чеснок")); // узнать индекс элемента 
+console.log(vegetables.includes("лук"));   // узнать наличие элемента
+
+vegetables.forEach((vegetables, index) => {  // выполняет функцию для каждого элемента
+    console.log(`${index}: ${vegetables}`);
+});
+
+let multiplication = numbers.map(numbers => numbers * 2); // создает новый масив, преобразуя элементы
+console.log(multiplication);
+
+let even = numbers.filter(numbers => numbers % 2 === 0); // вывод чётных чисел
+let ogg = numbers.filter(numbers => numbers % 2 !== 0);  // вывод не чётных чисел
+console.log(even);
+console.log(ogg);
+
+const products = [
+    {name: "ноутбук", price: 50000},
+    {name: "смартфон", price: 30000},
+    {name: "планшет", price: 20000},
+    {name: "наушники", price: 5000},
+    {name: "клавиатура", price: 5000}
+];
+
+products.sort((a, b) => a.price - b.price); // сортровка в данном случае от меньшего к большему
+console.log("сортировка по цене:");
+console.log(products);
+
+const chancellery = ["карандаш", "ручка", "ластик"];
+for (let i = 0; i < chancellery.length; i++) {
+    console.log(`концелярия: ${chancellery[i]}`);
+}
+
+chancellery.forEach((chancellery) => {
+    console.log(`концелярия: ${chancellery}`);
+});
+
+const user1 = {
+    firstName: "Мария",
+    lastName: "Петрова",
+    age: 25,
+    isEmployed: false,
+    contact: {
+        email: "marina@mail.com",
+        phone: "89004562323"
+    },
+    hobbies: ["танцы", "рисование"],
+    getFullName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+};
+
+const user2 = {
+    firstName: "Алексей",
+    lastName: "Сидоров",
+    age: 32,
+    isEmployed: true,
+    contact: {
+        email: "aleksey@mail.com",
+        phone: "89004569090"
+    },
+    hobbies: ["футбол", "музыка"],
+    getFullName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+};
+
+let people = [user1, user2];
+console.log(people);
+
+for (let i = 0; i < people.length; i++) {
+    const currentUser = people[i];
+    console.log(`${currentUser.getFullName()} имеет хобби: ${currentUser.hobbies.join(", ")}`);
+};
+    
