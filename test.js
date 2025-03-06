@@ -143,7 +143,7 @@ do {
     number++;
 } while(number < 5);
 
-*/
+
 
 // урок №7
 
@@ -242,4 +242,64 @@ for (let i = 0; i < people.length; i++) {
     const currentUser = people[i];
     console.log(`${currentUser.getFullName()} имеет хобби: ${currentUser.hobbies.join(", ")}`);
 };
-    
+
+*/
+
+// уррок № 8
+
+const user = {
+    name: "Анна",
+    age: 25,
+    isStudent: true
+};
+delete user.age;  // удаляет ключь в обьекте 
+
+for (let key in user) {    // перебор свойств с for
+    console.log(`${key}: ${user[key]}`)
+}    
+
+Object.keys(user).forEach(key => console.log(`${key}: ${user[key]}`)); // перебор с forEach ( ключ )
+
+Object.values(user).forEach(value => console.log(value)); // перебор values ( по значению ) 
+
+Object.entries(user).forEach(([key, value]) => console.log(`${key}: ${value}`)); // перебор (ключ: значение)
+
+console.log(user);
+console.log(user.name);    // доступ к обьекту ( в данном случае name )
+
+const house = new Object();
+house.developerComplex = "ПИК";
+house.nameComplex = "Исеть Парк";
+house.yearComplex = 2022;
+
+console.log(house);
+
+const products = [
+    {name: "ноутбук", price: 50000},
+    {name: "смартфон", price: 30000},
+    {name: "планшет", price: 20000},
+    {name: "наушники", price: 5000},
+    {name: "клавиатура", price: 5000}
+];
+
+console.log(products);
+
+const fruit = { name: "Яблоко" };
+const obj = Object.create(fruit);
+console.log(obj.name);   // вывод содержимого без системных символов 
+
+
+let flower = {
+    name: "Роза"
+};
+
+let characteristics = {
+    color: "Красный",
+    height: 25
+};
+
+let combined = Object.assign({}, flower, characteristics); // обьединение обькетов
+console.log(combined);
+
+Object.freeze(combined); // заморозка обьекта от изменений 
+delete combined.height;  // удаление не сработало 
