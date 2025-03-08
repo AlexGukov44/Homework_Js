@@ -243,7 +243,7 @@ for (let i = 0; i < people.length; i++) {
     console.log(`${currentUser.getFullName()} имеет хобби: ${currentUser.hobbies.join(", ")}`);
 };
 
-*/
+
 
 // уррок № 8
 
@@ -303,3 +303,40 @@ console.log(combined);
 
 Object.freeze(combined); // заморозка обьекта от изменений 
 delete combined.height;  // удаление не сработало 
+
+*/
+
+// урок № 9
+
+let text = document.querySelector("p"); // связь по тегу ( р )
+let textClass = document.querySelector(".hello"); // связь по классу ( .hello )
+let textAll = document.querySelectorAll("p"); // связь на все теги ( р ) 
+
+let textId = document.getElementById("helloText"); // связь по идентификатору ( helloText )
+textId.textContent = "Привет";  // замена текста по идентификатору на ( Привет )
+textId.style.color = "lightblue"; // замена стилей (цвета) по идентификатору на ( lightblue ) 
+textId.remove(); // удаление по идентификатору ( helloText )
+
+let textNew = document.createElement("p"); // добавление элемента 
+textNew.textContent = "новый текст"; // к примеру новый текст
+document.body.appendChild(textNew); // пример добавления в тег <body> в конец 
+document.body.prepend(textNew); // пример добавления в тег <body> в начало 
+document.querySelector(".box").prepend(textNew); // пример добавления по классу ( вох ) в начало
+
+// вывод данных из массива 
+
+let fruits = ["яблоко", "мандарн", "манго"];
+let changeTextArray = document.querySelector("array"); // по классу ( array )
+changeTextArray.innerText = fruits.join(", ");
+
+// вывод из обьекта 
+
+let obj = {
+    name: "Никита",
+    age: 30,
+    city: "Москва"
+};
+
+let changeTextObj = document.querySelector(".obj"); // берем класс ( obj )
+const values = Object.values(obj);                  // берем значение обьекта ( obj )
+changeTextObj.innerText = values.join(", ");        // выводим текстом обьединяем чере ( , )
