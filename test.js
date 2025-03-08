@@ -304,7 +304,7 @@ console.log(combined);
 Object.freeze(combined); // заморозка обьекта от изменений 
 delete combined.height;  // удаление не сработало 
 
-*/
+
 
 // урок № 9
 
@@ -340,3 +340,51 @@ let obj = {
 let changeTextObj = document.querySelector(".obj"); // берем класс ( obj )
 const values = Object.values(obj);                  // берем значение обьекта ( obj )
 changeTextObj.innerText = values.join(", ");        // выводим текстом обьединяем чере ( , )
+
+*/
+
+// урок № 10
+
+let button = document.querySelector("button");
+
+button.onclick = function() {   // старый способ обработчика по селектору
+    alert("вы нажали кнопку!");
+};
+
+button.addEventListener("click", function() { // новый способ вместо click пишем любой обработчик
+    alert("вы нажали кнопку.");
+});
+
+
+let boxColor = document.getElementById("boxColor");
+
+boxColor.addEventListener("mouseover", () => { // при наведении курсора 
+    boxColor.style.backgroundColor = "green";
+});
+boxColor.addEventListener("mouseout", () => { // при отведении курсора 
+    boxColor.style.backgroundColor = "blue";
+});
+
+
+// обработка события input
+
+let input = document.getElementById("inputText"); // обработка ввода
+let output = document.getElementById("output");   // обработка вывода
+
+output.textContent = "ваше сообщение: " + input.value;  // дублируем из вывода для отображения до ввода
+
+input.addEventListener("input", function() {  // перенос введённого в вывод
+    output.textContent = "ваше сообщение: " + input.value;
+});
+
+input.addEventListener("keyup", (event) => {  // при отпускании клавиши
+    output.textContent = `ваше сообщение: ${event.target.value}`;
+});
+
+//  обработка keydown    это нажатие клавиш 
+
+let outputKey = document.getElementById("outputKey");
+
+document.addEventListener("keydown", function(event) {  // event это событие 
+    outputKey.textContent = "вы нажали: " + event.key;  // отоброжение события
+});
