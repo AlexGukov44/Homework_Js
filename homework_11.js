@@ -20,7 +20,7 @@ let people = document.getElementById("people");
 let sortButton = document.getElementById("sortButton");
 
 let status;
-if ( user.age < 18 ) {
+if ( user.age >= 18 ) {
     status = "взрослый";
 } else {
     status = "ребёнок";
