@@ -389,7 +389,7 @@ document.addEventListener("keydown", function(event) {  // event это собы
     outputKey.textContent = "вы нажали: " + event.key;  // отоброжение события
 });
 
-*/
+
 
 // упрок № 11
 
@@ -435,3 +435,76 @@ showChildrenButton.addEventListener("click", () => {
     const children = user.filter(user => user.age < 18);
     showUsers(children);
 });
+
+*/
+
+// урок 12
+
+// вы планируете выйти гулять. 
+//если на улице дождь => взять зонтик
+//если на улице солнце => взять очки  
+
+
+// if
+// let weather = "солнечно";
+
+// if ( weather === "солнечно" ) {
+//     console.log("возьмите очки");
+// };
+
+// if else
+
+// let weather = "солнечно";
+// if ( weather === "дождь" ) {
+//     console.log("возмите зонт");
+// } else {
+//     console.log("возмите очки");
+// };
+
+// if else   if else 
+
+// let weather = "облачно";
+
+// if (weather === "дождь") {
+//     console.log("возмите зонтик");
+// } else if (weather == "солнечно") {
+//     console.log("возмите очки");
+// } else {
+//     console.log("не понятно, что брать!");
+// };
+
+// тернарный оператор ?
+
+//let weather = "облачно";
+
+//console.log((weather === "дождь") ? "возмите зонт" : "возмите очки" );
+
+// let message = (weather === "дождь")
+//     ? "возмите зонтик"
+//     : (weather === "солнечно")
+//         ? "возмите очки"
+//         : "не прнятно, что брать!";
+
+// console.log(message);
+
+
+// switch
+
+let weather = "снег";
+
+switch (weather) {
+    case "дождь":
+        console.log("возмите зонтик");
+        break;
+    case "солнечно":
+        console.log("возмите очки");
+        break;
+    case "снег":
+        console.log("наденте пуховик и шапку");
+        break;
+    case "облачно":
+        console.log("наденьте куртку");
+        break;
+    default:
+        console.log("непонятная погода, сидите дома!");
+};
