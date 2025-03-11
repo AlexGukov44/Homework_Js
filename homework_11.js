@@ -19,19 +19,13 @@ let people = document.getElementById("people");
 
 let sortButton = document.getElementById("sortButton");
 
-let status;
-if ( user.age >= 18 ) {
-    status = "взрослый";
-} else {
-    status = "ребёнок";
-};
-
 // функция для получения списка людей 
 
 function showUsers(userArray) {
     userList.innerHTML = " ";
     userArray.forEach( user => {
         const listItem = document.createElement("li");
+        const status = ( user.age >= 18 ) ? "взрослый" : "ребёнок" ;
         listItem.textContent = `${user.name}, ${user.age} лет, ${status}`;
         userList.appendChild(listItem);
     });
