@@ -28,13 +28,17 @@ formSignUp.addEventListener("submit", function(event) {
 
     if (!username) {
         usernameError.textContent = "Введите имя пользователя";
+        username.style.borderColor = "red";
         isValid = false;
     } else if (password.length < 4 ) {  // вообще я бы сделал не менее двух символов ( есть имя Ян )
         usernameError.textContent = "Имя должен быть не менее 4 символов";
         username.style.borderColor = "red";
         isValid = false;
+    } else {
+        username.style.borderColor = "green";
     }
 
+    
     const emailPattern = /^[s@]+@[^\s@]+.[^\s@]+$/;
 
     if (!email) {
@@ -43,7 +47,8 @@ formSignUp.addEventListener("submit", function(event) {
     } else if (!emailPattern.test(email)) {
         emailError.textContent = "Некорректный email";
         isValid = false;
-    }
+    } 
+
 
     if (!password) {
         passwordError.textContent = "Введите пароль";
