@@ -5,10 +5,10 @@ formSignUp.addEventListener("submit", function(event) {
 
     // список полей 
 
-    let username = document.getElementById("username").value;
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
-    let confirmPassword = document.getElementById("confirmPassword").value;
+    let username = document.getElementById("username");
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirmPassword");
 
     // блок для ошибок 
 
@@ -17,20 +17,25 @@ formSignUp.addEventListener("submit", function(event) {
     let passwordError = document.getElementById("passwordError");
     let confirmPasswordError = document.getElementById("confirmPasswordError");
 
-    // сброс текста в ошибке
+    // сброс текста в ошибке   и стилей 
 
     usernameError.textContent = "";
     emailError.textContent = "";
     passwordError.textContent = "";
     confirmPasswordError.textContent = "";
 
+    username.style.borderColor = "";
+    email.style.borderColor = "";
+    password.style.borderColor = "";
+    confirmPassword.style.borderColor = "";
+
     let isValid = true;
 
-    if (!username) {
+    if (!username.value) {
         usernameError.textContent = "Введите имя пользователя";
         username.style.borderColor = "red";
         isValid = false;
-    } else if (password.length < 4 ) {  // вообще я бы сделал не менее двух символов ( есть имя Ян )
+    } else if (username.value.length < 4 ) {  // вообще я бы сделал не менее двух символов ( есть имя Ян )
         usernameError.textContent = "Имя должен быть не менее 4 символов";
         username.style.borderColor = "red";
         isValid = false;
@@ -39,31 +44,43 @@ formSignUp.addEventListener("submit", function(event) {
     }
 
     
-    const emailPattern = /^[s@]+@[^\s@]+.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!email) {
+    if (!email.value) {
         emailError.textContent = "Введите email";
+        email.style.borderColor = "red";
         isValid = false;
-    } else if (!emailPattern.test(email)) {
+    } else if (!emailPattern.test(email.value)) {
         emailError.textContent = "Некорректный email";
-        isValid = false;
-    } 
-
-
-    if (!password) {
-        passwordError.textContent = "Введите пароль";
-        isValid = false;
-    } else if (password.length < 6 ) {
-        passwordError.textContent = "Пароль должен быть не менее 6 символов";
-        isValid = false;
-    }
-
-    if (password !== confirmPassword) {
-        confirmPasswordError.textContent = "подтвердите пароль";
+        email.style.borderColor = "red";
         isValid = false;
     } else {
-        confirmPasswordError.textContent = "пароли не совпадают";
+        email.style.borderColor = "green";
+    }
+
+
+    if (!password.value) {
+        passwordError.textContent = "Введите пароль";
+        password.style.borderColor = "red";
         isValid = false;
+    } else if (password.value.length < 6 ) {
+        passwordError.textContent = "Пароль должен быть не менее 6 символов";
+        password.style.borderColor = "red";
+        isValid = false;
+    } else {
+        password.style.borderColor = "green";
+    }
+
+    if (!confirmPassword.value) {
+        confirmPasswordError.textContent = "Подтвердите пароль";
+        confirmPassword.style.borderColor = "red";
+        isValid = false;
+    } else if (password.value !== confirmPassword.value) {
+        confirmPasswordError.textContent = "Пароли не совпадают";
+        confirmPassword.style.borderColor = "red";
+        isValid = false;
+    } else {
+        confirmPassword.style.borderColor = "green";
     }
     
     if (isValid) {
