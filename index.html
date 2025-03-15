@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/style.css">
     <title>учебный</title>
 </head>
-<body>
+<body> 
     <!--<p>Hello</p>
     <p class="hello">Hello</p>
     <p id="helloText">Hello</p>
@@ -36,7 +36,7 @@
         <button id="showChildren">Показать детей</button>
         <button id="people">все люди</button>
         <ul id="userList"></ul>
-    </div>-->
+    </div>
     <div class="lesson_13">
         <style>
             body {
@@ -49,6 +49,7 @@
                 gap: 2vw;
                 max-width: 800px;
                 margin: 20px auto 0;
+                justify-content: center;
             }
     
             .form label {
@@ -78,8 +79,12 @@
             .error-message {
                 color: red;
             }
+
+            .btn {
+                justify-content: center;
+            }
         </style>
-        <form class="form" id="signupForm">
+        <!--<form class="form" id="signupForm">
             <div>
                 <label for="username">Имя пользователя:</label>
                 <input type="text" id="username" name="username" autocomplete="off">
@@ -105,7 +110,17 @@
             </div>
     
             <button type="submit">Зарегистрироваться</button>
+        </form>-->
+    <div class="lesson_14">
+        <form id="userForm" class="form">
+            <label for="username">введите имя:</label>
+            <input type="text" id="username" />
+            <button type="button" id="saveBtn" class="btn">сохранить</button>
         </form>
+        <button id="showBtn" class="btn">показать имя</button>
+        <button id="deleteBtn" class="btn">удалить имя</button>
+        <div id="output"></div>
+    </div>
     <script src="test.js"></script>
 </body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ДЗ 14</title>
+</head>
+<body>
+    <section>
+        <div class="lesson_14">
+            <style>
+                section {
+                    display: flex;
+                    justify-content: center;
+                }
+                .lesson_14 {
+                    border: 3px solid black;
+                    width: 500px;
+                    text-align: center;
+                    font-size: 30px;
+                }
+                #userForm input, #userForm button {
+                    display: block;
+                    width: 100%;
+                    box-sizing: border-box;
+                    font-size: 20px;
+                }
+                #saveBtn {
+                    margin-top: 10px;
+                }
+                .btn {
+                    background-color: aqua;
+                }
+                .btn_del {
+                    background-color: red;
+                }
+                .btn_show {
+                    background-color: aquamarine;
+                }
+                .counter, .output {
+
+                }
+            </style>
+            <form id="userForm" class="form">
+                <label for="username">введите имя:</label>
+                <input type="text" id="username" />
+                <button type="button" id="saveBtn" class="btn">сохранить</button>
+            </form>
+            <button id="showBtn" class="btn_show">показать имя</button>
+            <button id="deleteBtn" class="btn_del">удалить имя</button>
+            <h5 id="counter" class="counter"></h5>
+            <div id="output" class="output"></div>
+        </div>
+    </section>
+    <script src="homework_14.js"></script>
+</body>
+</html>

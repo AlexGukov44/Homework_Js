@@ -508,7 +508,7 @@ switch (weather) {
     default:
         console.log("непонятная погода, сидите дома!");
 };
-*/
+
 
 // урок № 13
 
@@ -567,8 +567,83 @@ formSignUp.addEventListener("submit", function(event) {
         confirmPasswordError.textContent = "пароли не совпадают";
         isValid = false;
     }
-    
+     
     if (isValid) {
         alert("форма отправлена успешно!");
     }
 });
+
+*/
+
+// урок № 14
+
+localStorage.setItem('username', 'annblok');
+localStorage.setItem('fallowers', '100.000');
+
+//let username = localStorage.getItem('username');
+let fallowers = localStorage.getItem('fallowers');
+
+console.log(`У пользователя ${username} ${fallowers} подписчиков`);
+
+
+localStorage.removeItem('fallowers'); // удалить параметр
+localStorage.clear();                 // удалить всё  
+
+let total = localStorage.length;      // узнать количество элементов в localStorage
+console.log(`В localStorage хранится ${total} элементов`);
+
+
+
+// цикл для отображения всех данных которые есть 
+
+for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    let value = localStorage.getItem(key);
+    console.log(`ключ: ${key}, значение: ${value}`);
+};
+
+
+// цикл для всех ключей которые усть 
+
+for (let i = 0; i < localStorage.length; i++) {
+    let key = localStorage.key(i);
+    console.log(`ключ ${i + 1}: ${key}`);
+};
+
+
+// практика 
+
+let usernameInput = document.getElementById('username');
+let saveBtn = document.getElementById('saveBtn');
+let showBtn = document.getElementById('showBtn');
+let deleteBtn = document.getElementById('deleteBtn');
+let output = document.getElementById('output');
+
+// функция для отображения имен 
+
+function showName() {
+    let dataName = localStorage.getItem('username');
+    if (dataName) {
+        output.textContent = `сохранённое имя: ${dataName}`;
+    } else {
+        output.textContent = 'имя не найдено';
+    }
+};
+
+saveBtn.addEventListener('click', () => {
+    let username = usernameInput.value;
+    if (username) {
+        localStorage.setItem('username', username);
+        usernameInput.value = '';
+        output.textContent = `имя ${username} сохранено`;
+    } else {
+        output.textContent = 'введие имя перед сохранением';
+    }
+});
+
+showBtn.addEventListener('click', showName);
+
+deleteBtn.addEventListener('click', () => {
+    localStorage.removeItem('username');
+    output.textContent = 'имя удалено';
+})
