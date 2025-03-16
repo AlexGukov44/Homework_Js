@@ -689,15 +689,14 @@ function updateFavoritesDisplay() {
         trackBox.appendChild(trackName);
         trackBox.appendChild(removeButton);
         favoritesBox.appendChild(trackBox);
-
-        trackElements.forEach(trackElement => {
-            let trackName = trackElement.querySelector('span').textContent;
-            let svg = trackElement.querySelector('svg');
-            svg.style.fill = favorites.includes(trackName) ? '#e12d20' : '#fff';
-        });
-        
     });
+    trackElements.forEach(trackElement => {
+        let trackName = trackElement.querySelector('span').textContent;
+        let svg = trackElement.querySelector('svg');
+        svg.style.fill = favorites.includes(trackName) ? '#e12d20' : '#fff';
+    });  
 };
+
 
 // добавить трек в #favorites
 
