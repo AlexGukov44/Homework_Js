@@ -573,7 +573,7 @@ formSignUp.addEventListener("submit", function(event) {
     }
 });
 
-*/
+
 
 // урок № 14
 
@@ -647,3 +647,91 @@ deleteBtn.addEventListener('click', () => {
     localStorage.removeItem('username');
     output.textContent = 'имя удалено';
 })
+*/
+
+// урок № 15 
+
+
+// извлечение данных из localStorage в #favorites
+
+function getFavorites() {
+    return JSON.parse(localStorage.getItem('favoriteTrecks')) || [];
+};
+
+// сохранение списка #favorites в localStorage
+
+function saveFavorites(favorites) {
+    localStorage.setItem('favoriteTrecks', JSON.stringify(favorites));
+};
+
+// отображение в #favorites и кнопки удалить 
+
+function updateFavoritesDisplay() {
+    let favorites = getFavorites();
+    let favoritesBox = document.getElementById('favorites');
+    let trackElements = document.querySelectorAll('#tracks .track');
+
+    favoritesBox.innerHTML = '';
+
+    favorites.forEach(track => {
+        let trackBox = document.createElement('div');
+        trackBox.className = 'favorite';
+
+        let trackName = document.createElement('span');
+        trackName.textContent = track;
+
+        let removeButton = document.createElement('button');
+        removeButton.textContent = 'удалить';
+        removeButton.addEventListener('click', () => {
+            removeFavorite(track);
+        });
+
+        trackBox.appendChild(trackName);
+        trackBox.appendChild(removeButton);
+        favoritesBox.appendChild(trackBox);
+
+        trackElements.forEach(trackElement => {
+            let trackName = trackElement.querySelector('span').textContent;
+            let svg = trackElement.querySelector('svg');
+            svg.style.fill = favorites.includes(trackName) ? '#e12d20' : '#fff';
+        });
+        
+    });
+};
+
+// добавить трек в #favorites
+
+function addFavorite(trackName) {
+    let favorites = getFavorites();
+    if (!favorites.includes(trackName)) {
+        favorites.push(trackName);
+        saveFavorites(favorites);
+        updateFavoritesDisplay();
+    }
+};
+
+// удалить трек из #favorites
+
+function removeFavorite(trackName) {
+    let favorites = getFavorites().filter(track => track !== trackName);
+    saveFavorites(favorites);
+    updateFavoritesDisplay();
+};
+
+// обработчик событий click для кнопки 
+
+function initializeButtons() {
+    document.querySelectorAll('#tracks .track button').forEach(button => {
+        let trackName = button.parentElement.querySelector('span').textContent;
+        button.addEventListener('click', () => {
+            addFavorite(trackName);
+        })
+    })
+};
+
+// иниализация при загрузке страницы 
+
+window.onload = () => {
+    initializeButtons();
+    updateFavoritesDisplay();
+};
