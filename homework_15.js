@@ -51,6 +51,7 @@ function getFavorites() {
        favorites.push(trackName);
        saveFavorites(favorites);
        updateFavoritesDisplay();
+       countLakedTracks();
     };
  };
  
@@ -59,6 +60,7 @@ function getFavorites() {
     const favorites = getFavorites().filter(track => track !== trackName);
     saveFavorites(favorites);
     updateFavoritesDisplay();
+    countLakedTracks();
  };
  
  // Добавляет обработчики для кнопок

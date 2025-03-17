@@ -647,7 +647,7 @@ deleteBtn.addEventListener('click', () => {
     localStorage.removeItem('username');
     output.textContent = 'имя удалено';
 })
-*/
+
 
 // урок № 15 
 
@@ -734,3 +734,7 @@ window.onload = () => {
     initializeButtons();
     updateFavoritesDisplay();
 };
+*/
+
+// урок № 16
+
