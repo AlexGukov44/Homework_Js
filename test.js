@@ -738,3 +738,43 @@ window.onload = () => {
 
 // урок № 16
 
+class User {
+    constructor(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    sayHello() {
+        console.log('привет! меня зовут ' + this.name);
+    }
+    celebrateBirthday() {
+        this.age++;
+        console.log('ура! мне теперь ' + this.age + ' лет!');
+    }
+};
+
+let user1 = new User('Николай', 25);
+user1.sayHello();
+user1.celebrateBirthday();
+
+
+// наследование extends
+
+class Animal {
+    constructor(name) {
+        this.name = name;
+    }
+    speak() {
+        console.log(`${this.name} издаёт звук`);
+    }
+};
+class Doc extends Animal {
+    speak() {
+        console.log(`${this.name} лает!`);
+    }
+};
+
+let nameAnimal = new Animal('гав');
+nameAnimal.speak();
+
+let nameDoc = new Doc('шарик');
+nameDoc.speak();
