@@ -734,7 +734,7 @@ window.onload = () => {
     initializeButtons();
     updateFavoritesDisplay();
 };
-*/
+
 
 // урок № 16
 
@@ -778,3 +778,24 @@ nameAnimal.speak();
 
 let nameDoc = new Doc('шарик');
 nameDoc.speak();
+
+*/
+
+//  урок № 17
+
+fetch('https://goweather.herokuapp.com/weather/Moscow')
+    .then(function(response) {
+        return response.json();
+})
+    .then(function(data) {
+        let weatherContainer = document.getElementById('weather');
+        weatherContainer.innerHTML = `
+        <p>${data.temperature}</p>
+        <p>${data.wind}</p>
+        <p>${data.description}</p>
+        `;
+    })
+    .catch(function(error) {
+        console.error('ошибка получения данных');
+    });
+    
