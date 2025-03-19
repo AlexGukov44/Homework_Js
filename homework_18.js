@@ -23,7 +23,14 @@ fetch('https://randomuser.me/api/?results=10')
                 let otherBox = document.createElement('div');
                 otherBox.classList.add(''); // добавить классы после того как заработает
                 otherBox.innerHTML = `
-                // не понимаю что выводить тут ?
+                <div>${(index + 1)} человек</div>
+                <img src="URL"${(otherUser.picture.large)}>
+                <p>${(otherUser.name.first + otherUser.name.last)}</p>
+                <p>${(otherUser.gender)}</p>
+                <p>${(otherUser.location.city)}</p>
+                <a href="mailto:EMAIL">${(otherUser.email)}</a>
+                <p>${(otherUser.login.username)}</p>
+                <p>${(otherUser.login.password)}</p>
                 `;
                 resultsBox.appendChild(otherBox);
             })
