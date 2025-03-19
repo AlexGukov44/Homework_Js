@@ -779,7 +779,7 @@ nameAnimal.speak();
 let nameDoc = new Doc('шарик');
 nameDoc.speak();
 
-*/
+
 
 //  урок № 17
 
@@ -794,6 +794,43 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
         <p>${data.wind}</p>
         <p>${data.description}</p>
         `;
+    })
+    .catch(function(error) {
+        console.error('ошибка получения данных');
+    });
+    
+*/
+
+// урок 18 
+
+fetch('https://goweather.herokuapp.com/weather/Moscow')
+    .then(function(response) {
+        return response.json();
+})
+    .then(function(data) {
+        let weatherContainer = document.getElementById('weather');
+        weatherContainer.innerHTML = `
+        <p>${data.temperature}</p>
+        <p>${data.wind}</p>
+        <p>${data.description}</p>
+        `;
+        if (data.forecast && data.forecast.length > 0) {
+            let forecastContainer = document.createElement('div');
+            forecastContainer.classList.add('forecast');
+            forecastContainer.innerHTML = `<h2>Прогноз погоды на ближайшие дни</h2>`;
+            weatherContainer.appendChild(forecastContainer);
+
+            data.forecast.forEach(function(dayForecast, index) {
+                let dayContainer = document.createElement('div');
+                dayContainer.classList.add('forecast-item');
+                dayContainer.innerHTML = `
+                <p>${index + 1}</p>
+                <p>${dayForecast.temperature}</p>
+                <p>${dayForecast.wind}</p>
+                `;
+                forecastContainer.appendChild(dayContainer);
+            });
+        }
     })
     .catch(function(error) {
         console.error('ошибка получения данных');
