@@ -216,7 +216,7 @@
     <div class="lesson_17">
         <h2>погода в Москве</h2>
         <div id="weather"></div>
-    </div>-->
+    </div>
     <div class="lesson_18">
         <style>
             #weather {
@@ -269,6 +269,39 @@
         </style>
         <h2>погода в Москве</h2>
         <div id="weather"></div>
+    </div>-->
+    <div class="lesson_20">
+        <style>
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: red;
+            }
+
+            .body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                overflow: hidden;
+            }
+            .square {
+                width: 50px;
+                height: 50px;
+                background-color: blue;
+                position: absolute;
+                left: 0;
+                top: calc(50% - 25%);
+            }
+        </style>
+        <div class="box"></div>
+        <br>
+        <div class="box _interval"></div>
+        <br>
+        <div class="box _timeout"></div>
+        <br>
+        <div class="square"></div>
     </div>
     <script src="test.js"></script>
 </body>

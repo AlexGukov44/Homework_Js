@@ -799,7 +799,7 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
         console.error('ошибка получения данных');
     });
     
-*/
+
 
 // урок 18 
 
@@ -836,3 +836,62 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
         console.error('ошибка получения данных');
     });
     
+    */
+
+    // урок № 20
+
+    // простая анимация 
+
+    const box = document.querySelector('.box');
+    box.addEventListener('click', () => {
+        box.style.transform = 'translateX(100px)';
+    });
+
+    //  setInterval()
+        
+    const boxSetInterval = document.querySelector('._interval');
+    boxSetInterval.addEventListener('click', () => {
+        let position = 0;
+        const interval = setInterval(() => {
+            position += 5;
+            boxSetInterval.style.transform = `translateX(${position}px)`;
+
+            if (position >= 100) {
+                clearInterval(interval);
+            }
+        }, 20);
+    });
+
+    //   setTimeout()
+
+    const boxSetTimeout = document.querySelector('._timeout');
+    boxSetTimeout.addEventListener('click', () => {
+        let position = 0;
+
+        function move() {
+            position += 5;
+            boxSetTimeout.style.transform = `translateX(${position}px)`;
+
+            if (position < 100) {
+                setTimeout(move, 20);
+            }
+        }
+
+        move();
+    });
+
+    //    requestAnimationFrame()    синхронизируется с герцовкой экрана  и не работает на не активной вкладке 
+
+    const square = document.querySelector('.square');
+    let position = 0;
+
+    function animate() {
+        position += 2;
+        square.style.left = `${position}px`;
+        if (position > window.innerWidth) {
+            position = -50;
+        }
+        requestAnimationFrame(animate);
+    }
+
+    animate();
