@@ -5,13 +5,13 @@ fetch('https://randomuser.me/api/?results=10')
     .then(function(data) {
         let userBox = document.getElementById('user');
         userBox.innerHTML = `
-        <img src="URL"${(data.picture.large)}>
-        <p>${(data.name.first + data.name.last)}</p>
-        <p>${(data.gender)}</p>
-        <p>${(data.location.city)}</p>
-        <a href="mailto:EMAIL">${(data.email)}</a>
-        <p>${(data.login.username)}</p>
-        <p>${(data.login.password)}</p>
+        <img src="URL"${(data.results[0].picture.large)}>
+        <p>${(data.results[0].name.first + " " + data.results[0].name.last)}</p>
+        <p>${(data.results[0].gender)}</p>
+        <p>${(data.results[0].location.city)}</p>
+        <a href="mailto:(${(data.results[0].email)})"></a>
+        <p>${(data.results[0].login.username)}</p>
+        <p>${(data.results[0].login.password)}</p>
         `;
         if (data.results && data.results.length > 0) {
             resultsBox = document.createElement('div');
@@ -24,13 +24,13 @@ fetch('https://randomuser.me/api/?results=10')
                 otherBox.classList.add(''); // добавить классы после того как заработает
                 otherBox.innerHTML = `
                 <div>${(index + 1)} человек</div>
-                <img src="URL"${(otherUser.picture.large)}>
-                <p>${(otherUser.name.first + otherUser.name.last)}</p>
-                <p>${(otherUser.gender)}</p>
-                <p>${(otherUser.location.city)}</p>
-                <a href="mailto:EMAIL">${(otherUser.email)}</a>
-                <p>${(otherUser.login.username)}</p>
-                <p>${(otherUser.login.password)}</p>
+                <img src="URL"${(otherUser.results[index].picture.large)}>
+                <p>${(otherUser.results[index].name.first +  " " + otherUser.name.last)}</p>
+                <p>${(otherUser.results[index].gender)}</p>
+                <p>${(otherUser.results[index].location.city)}</p>
+                <a href="mailto:(${(otherUser.results[index].email)})"></a>
+                <p>${(otherUser.results[index].login.username)}</p>
+                <p>${(otherUser.results[index].login.password)}</p>
                 `;
                 resultsBox.appendChild(otherBox);
             })
