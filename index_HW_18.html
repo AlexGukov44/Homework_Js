@@ -7,9 +7,44 @@
 </head>
 <body>
     <style>
+        .user {
+            text-align: center;
+            border: 3px solid black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20 auto;
+        }
+        img {
+            border-radius: 50%;
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .other-users {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 3px solid black;
+            padding: 10px;
+        }
 
+        .user-item {
+            border: 3px solid black;
+            border-radius: 5px;
+            width: fit-content;
+            padding: 10px 20px;
+        }
+
+        .other-users .user-item { 
+            margin-bottom: 10px;
+            border: 3px solid black;
+            padding: 5px;
+    }
     </style>
-    <div class="user" id="user"></div>
+        <div class="user" id="user"></div>
     <script src="homework_18.js"></script>
 </body>
 </html>
