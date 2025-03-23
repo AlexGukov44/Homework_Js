@@ -1,36 +1,35 @@
-fetch('https://dummyjson.com/posts')
+    fetch('https://dummyjson.com/posts')
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
         let postBox = document.getElementById('posts');
-        postBox.innerHTML = `
-        <h1>${(data.title)}</h1>
-        <p>${(data.body)}</p>
-        <p>${(data.tags)}</p>
-        <img>${(data.reactions)}</img>
-        <img>${(data.views)}</img>
-        `;
-        if (data.posts && data.posts.lenght > 0) {
+
+        if (data.posts) { 
             let postsContainer = document.createElement('div');
-            postsContainer.classList.add('');       // добавить класс позже 
+            postsContainer.classList.add('posts'); 
             postBox.appendChild(postsContainer);
 
-            data.postBox.forEach(function(postItem, index) {
+            data.posts.forEach(function(postItem, index) {
                 let itemBox = document.createElement('div');
-                itemBox.classList.add('');          //  добавить позже 
+                itemBox.classList.add('posts-item'); 
                 itemBox.innerHTML = `
-                <h1>${(postItem.title)}</h1>
-                <p>${(postItem.body)}</p>
-                <p>${(postItem.tags)}</p>
-                <img>${(postItem.reactions)}</img>
-                <img>${(postItem.views)}</img>
+                    <h2>${postItem.title}</h2>
+                    <p>${postItem.body}</p>
+                    <p> ${postItem.tags.join(', ')}</p>
+                    <img src="img/like.svg" alt="Лайк">
+                    <p>${postItem.reactions.likes}</p>
+                    <img src="img/dislike.svg" alt="Лайк">
+                    <p>${postItem.reactions.dislikes}</p>
+                    <img src="img/view.svg"${postItem.views} alt="Просмотр">
+                    <p>${postItem.views}</p>
                 `;
                 postsContainer.appendChild(itemBox);
-            })
+            });
+        } else {
+            postBox.innerHTML = "<p>Сообщений не найдено.</p>";
         }
     })
     .catch(function(error) {
-        console.error('ошибка получения данных', error);
+        console.error('Ошибка получения данных:', error);
     });
-    
