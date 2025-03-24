@@ -836,7 +836,7 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
         console.error('ошибка получения данных');
     });
     
-    */
+    
 
     // урок № 20
 
@@ -895,3 +895,29 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
     }
 
     animate();
+    */
+
+    //  урок № 21
+
+
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(MotionPathPlugin,TextPlugin)
+        gsap.to('#box', { x: 300, duration: 2 })
+            .then(() => gsap.to('#box', { y: 200, duration: 2 }))
+            .then(() => gsap.to('#box', { rotation: 360, duration: 2 }))
+            .then(() => gsap.to('#boxBlue', { rotation: 360, duration: 2 }));
+        gsap.to('#circle', {
+            duration: 2,
+            repeat: -1,
+            motionPath: {
+                path:"#motionPath",
+                align: "#MotionPath",
+                alignOrigin: [0.5, 0.5]
+            }
+        });
+        gsap.to("#text", {
+            duration: 2,
+            text: "This is the new text",
+            ease: "none",
+        });
+    });
