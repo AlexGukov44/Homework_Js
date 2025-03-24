@@ -16,12 +16,12 @@
                 itemBox.innerHTML = `
                     <h2>${postItem.title}</h2>
                     <p>${postItem.body}</p>
-                    <p> ${postItem.tags.join(', ')}</p>
-                    <img src="img/like.svg" alt="Лайк">
+                    <p class="tags"> ${postItem.tags.join(', ')}</p>
+                    <img src="img/like.svg" class="posts-icon" alt="Лайк">
                     <p>${postItem.reactions.likes}</p>
-                    <img src="img/dislike.svg" alt="Лайк">
+                    <img src="img/dislike.svg" class="posts-icon" alt="Лайк">
                     <p>${postItem.reactions.dislikes}</p>
-                    <img src="img/view.svg"${postItem.views} alt="Просмотр">
+                    <img src="img/view.svg"${postItem.views} class="posts-icon" alt="Просмотр">
                     <p>${postItem.views}</p>
                 `;
                 postsContainer.appendChild(itemBox);
