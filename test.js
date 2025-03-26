@@ -895,7 +895,7 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
     }
 
     animate();
-    */
+    
 
     //  урок № 21
 
@@ -921,3 +921,20 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
             ease: "none",
         });
     });
+
+    */
+
+    // урок № 22
+
+    let swiper = new Swiper(".swiperInfo", {
+        slidesPerView: 3,   // отоброжает 3 блока 
+        spaceBetween: 30,   // растояние между блоками 30 рх 
+        pagination: {
+            l: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+      });
