@@ -1,5 +1,5 @@
 let swiper = new Swiper(".mySwiper", {
-    slidesPerView: 5,
+    slidesPerView: 4,
     spaceBetween: 30,
     loop: true,
     pagination: {
@@ -15,7 +15,7 @@ let swiper = new Swiper(".mySwiper", {
     grabCursor: true,
     centeredSlides: true,
     coverflowEffect: {
-      rotate: 50,
+      rotate: 0,
       stretch: 0,
       depth: 100,
       modifier: 1,

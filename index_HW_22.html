@@ -7,38 +7,89 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
 </head>
 <body>
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-          </div>
-          <div class="swiper-slide">
-            <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-          </div>
+    <style>
+        .container {
+          display: flex;
+          flex-direction: column; /* Располагаем элементы вертикально */
+          align-items: center; /* Центрируем по горизонтали */
+          justify-content: center; /* Центрируем по вертикали */
+          min-height: 100vh; /* Гарантируем, что контейнер занимает всю высоту viewport */
+          padding: 20px; /* Добавляем отступы вокруг карусели */
+          padding-left: 20px;
+          padding-right: 20px;
+
+        }
+        
+        .mySwiper {
+          width: 90%; /* Или фиксированная ширина, или max-width для адаптивности */
+          
+          margin: 0 auto; /* Центрируем по горизонтали */
+        }
+
+        .swiper-wrapper {
+          display: flex;
+        }
+  
+        .swiper-slide img {
+          display: block;
+          width: 100%;
+          height: auto;
+          object-fit: cover;  
+          border-radius: 40px;
+        }
+
+        .swiper-buttons {
+          display: flex;
+          justify-content: center; 
+          align-items: center; 
+        }
+
+        .swiper-button-next, .swiper-button-prev, .swiper-pagination {
+          margin: 0 10px; 
+        }
+
+    </style>
+    <div class="container">
+        <h1>Simple Image Carousel</h1>
+        <h4>5 x Image items ❖ Carousel<h4>
+         <h4>Components & Variants</h4>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
+              </div>
+              <div class="swiper-slide">
+                <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
+              </div>
+            </div>
         </div>
-        <div class="swiper-pagination"></div>
-      </div>
+        <div class="swiper-buttons">
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+    </div>
     <script src="swiper-bundle.min.js"></script>
     <script src="homework_22.js"></script>
 </body>
