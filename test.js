@@ -922,7 +922,7 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
         });
     });
 
-    */
+    
 
     // урок № 22
 
@@ -938,3 +938,37 @@ fetch('https://goweather.herokuapp.com/weather/Moscow')
             prevEl: ".swiper-button-prev",
           },
       });
+
+*/
+
+// урок № 25
+
+const object = document.querySelector('.object');
+let x = 0;
+let y = 0;
+
+document.addEventListener('keydown', (event) => {
+    switch (event.key) {
+        case 'ArrowUp':
+            y -= 10;
+            break;
+        case 'ArrowDown':
+            y += 10;
+            break;
+        case 'ArrowLeft':
+            x -= 10;
+            break;
+        case 'ArrowRight':
+            x += 10;
+            break;
+    }
+    object.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+object.addEventListener('mousedown', () => {
+    object.style.opacity = 0;
+
+    setTimeout(() => {
+        object.style.opacity = 1;
+    }, 2000);
+});
