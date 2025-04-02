@@ -1,13 +1,14 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
+const timerDisplay = document.getElementById('timer');
 
 function resizeCanvas() {
-    canvas.width = canvas.offsetWidth;  // Используем offsetWidth и offsetHeight
+    canvas.width = canvas.offsetWidth; 
     canvas.height = canvas.offsetHeight;
     resetPlayerAndDots();
 }
 
-window.addEventListener('load', resizeCanvas); // Вызываем при загрузке страницы
+window.addEventListener('load', resizeCanvas); 
 window.addEventListener('resize', resizeCanvas);
 
 
@@ -31,7 +32,7 @@ function drawPlayer(x, y, radius, color) {
 }
 
 const dots = [];
-let dotCount = 20;
+let dotCount = 30;
 let dotRadius = 10;
 let dotColor = 'red';   //  #10375c
 
@@ -74,7 +75,8 @@ function updatePlayer() {
 }
 
 function checkCollision() {
-    for (let i = 0; i < dots.length; i++) {
+    for (let i = dots.length - 1; i >= 0; i--) {
+    //for (let i = 0; i < dots.length; i++) {
         const dot = dots[i];
         const distance = Math.sqrt(Math.pow(player.x - dot.x, 2) + Math.pow(player.y - dot.y, 2));
 
@@ -83,6 +85,18 @@ function checkCollision() {
             break;
         }
     }
+}
+
+let startTime;
+let timeLeft = 60; 
+let timerInterval; 
+
+function startTimer() {
+    startTime = Date.now();
+    timerInterval = setInterval(() => {
+        timeLeft = Math.max(0, 60 - Math.floor((Date.now() - startTime) / 1000));
+        timerDisplay.textContent = timeLeft;
+    }, 1000);
 }
 
 function gameLoop() {
@@ -94,9 +108,17 @@ function gameLoop() {
     checkCollision();
 
     if (dots.length === 0) {
+        clearInterval(timerInterval);
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
-        ctx.fillText('ПОЗДРАВЛЯЮ! ', 50, canvas.height / 2);
+        ctx.fillText('ПОЗДРАВЛЯЮ! ', 50, canvas.height / 2, canvas.width / 2);
+        return;
+    }
+    if (timeLeft === 0) {
+        clearInterval(timerInterval);
+        ctx.fillStyle = '#fff';
+        ctx.font = '40px Tahoma';
+        ctx.fillText('Время вышло!', 50, canvas.height / 2, canvas.width / 2);
         return;
     }
 
@@ -133,4 +155,15 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
+function resetPlayerAndDots() {
+    player.x = canvas.width / 2;
+    player.y = canvas.height / 2;
+    dots.length = 0;
+    createDots();
+    timeLeft = 30;
+    clearInterval(timerInterval); 
+    startTimer(); 
+}
+
+startTimer();
 gameLoop();
