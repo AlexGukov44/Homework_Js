@@ -1,19 +1,15 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
-function resizeCanvas() {          //  получаем ширину экрана при загрузке и фиксируем изменения ( если они есть )
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;  // Используем offsetWidth и offsetHeight
+    canvas.height = canvas.offsetHeight;
     resetPlayerAndDots();
-    player.x = canvas.width / 2;
-    player.y = canvas.height / 2;
-    dots.forEach(dot => {
-        dot.x = Math.random() * canvas.width;
-        dot.y = Math.random() * canvas.height;
-    });
-  }
-  window.addEventListener('load', resizeCanvas);
-  window.addEventListener('resize', resizeCanvas);
+}
+
+window.addEventListener('load', resizeCanvas); // Вызываем при загрузке страницы
+window.addEventListener('resize', resizeCanvas);
+
 
 
 const player = {
@@ -100,7 +96,7 @@ function gameLoop() {
     if (dots.length === 0) {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
-        ctx.fillText('поздравляем!', 50, canvas.height / 2);
+        ctx.fillText('ПОЗДРАВЛЯЮ! ', 50, canvas.height / 2);
         return;
     }
 
