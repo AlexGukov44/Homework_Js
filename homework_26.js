@@ -1,33 +1,6 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
-let timeLeft = 30; // время в секундах
-let timerInterval;
-let gameRunning = false; // Флаг, отслеживающий, запущена ли игра
-
-function startTimer() {
-    timerInterval = setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            gameOver('Время вышло!');
-        }
-    }, 1000);
-}
-
-function gameOver(message) {
-    clearInterval(timerInterval);
-    gameRunning = false; // Остановить игровой цикл
-    ctx.fillStyle = '#fff';
-    ctx.font = '40px Tahoma';
-    const textMetrics = ctx.measureText(message);
-    const x = (canvas.width - textMetrics.width) / 2;
-    const y = canvas.height / 2 + 15;
-    ctx.fillText(message, x, y);
-}
-
-
-
 function resizeCanvas() {          //  получаем ширину экрана при загрузке и фиксируем изменения ( если они есть )
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -43,17 +16,15 @@ function resizeCanvas() {          //  получаем ширину экран�
   window.addEventListener('resize', resizeCanvas);
 
 
-
 const player = {
-    x: 0,
-    y: 0,
+    x: canvas.width / 2,
+    y: canvas.height / 2,
     radius: 20,
     speed: 3,
     color: '#dfc252',
     dx: 0,
     dy: 0,
 };
-
 
 function drawPlayer(x, y, radius, color) {
     ctx.beginPath();
@@ -66,7 +37,7 @@ function drawPlayer(x, y, radius, color) {
 const dots = [];
 let dotCount = 20;
 let dotRadius = 10;
-let dotColor = 'red';    //   #10375c
+let dotColor = 'red';   //  #10375c
 
 function drawDots() {
     for (let i = 0; i < dots.length; i++) {
@@ -88,12 +59,6 @@ function createDots() {
     }
 }
 createDots();
-
-function resetPlayerAndDots() {
-    player.x = canvas.width / 2;
-    player.y = canvas.height / 2;
-    createDots();
-}
 
 function updatePlayer() {
     player.x += player.dx;
@@ -135,90 +100,41 @@ function gameLoop() {
     if (dots.length === 0) {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
-        const text = 'Поздравляем!';
-        const textMetrics = ctx.measureText(text);
-        const x = (canvas.width - textMetrics.width) / 2;
-        const y = canvas.height / 2 + 15; // +15 для вертикального центрирования (коррекция для шрифта)
-
-        ctx.fillText(text, x, y);
-
-        clearInterval(timerInterval); // остановить таймер при победе
-        gameOver('время вышло!');
+        ctx.fillText('поздравляем!', 50, canvas.height / 2);
         return;
-
     }
-    ctx.fillStyle = 'white';
-    ctx.font = '20px Arial';
-    ctx.fillText(`Время: ${timeLeft}`, 10, 30);
 
     requestAnimationFrame(gameLoop);
 }
 
-function startGame() {
-    gameRunning = true; // Установка флага запуска игры
-    resetPlayerAndDots();
-    timeLeft = 30;
-    startTimer();
-    gameLoop();
-}
-
-  
-  
-
 document.addEventListener('keydown', (event) => {
     switch (event.key) {
-        // case 'ArrowUp':
-        //     player.dy = -player.speed;
-        //     break;
-        // case 'ArrowDown':
-        //     player.dy = player.speed;
-        //     break;
-        // case 'ArrowLeft':
-        //     player.dx = -player.speed;
-        //     break;
-        // case 'ArrowRight':
-        //     player.dx = player.speed;
-        //     break;
-        case 'w':
+        case 'ArrowUp':
             player.dy = -player.speed;
             break;
-        case 's':
+        case 'ArrowDown':
             player.dy = player.speed;
             break;
-        case 'a':
+        case 'ArrowLeft':
             player.dx = -player.speed;
             break;
-        case 'd':
+        case 'ArrowRight':
             player.dx = player.speed;
             break;
-
     }
 });
 
 document.addEventListener('keyup', (event) => {
     switch (event.key) {
-        // case 'ArrowUp':
-        // case 'ArrowDown':
-        //     player.dy = 0;
-        //     break;
-        // case 'ArrowLeft':
-        // case 'ArrowRight':
-        //     player.dx = 0;
-        //     break;
-        case 'w':
-        case 's':
+        case 'ArrowUp':
+        case 'ArrowDown':
             player.dy = 0;
             break;
-        case 'a':
-        case 'd':
+        case 'ArrowLeft':
+        case 'ArrowRight':
             player.dx = 0;
             break;
-
     }
 });
 
-//document.getElementById('startGame').addEventListener('click', startGame);
-
 gameLoop();
-startGame();
-startTimer();
