@@ -3,8 +3,8 @@ const ctx = canvas.getContext('2d');
 const timerDisplay = document.getElementById('timer');
 
 function resizeCanvas() {
-    canvas.width = canvas.offsetWidth; 
-    canvas.height = canvas.offsetHeight;
+    canvas.width = window.innerWidth; 
+    canvas.height = window.innerHeight;
     resetPlayerAndDots();
 }
 
@@ -111,7 +111,8 @@ function gameLoop() {
         clearInterval(timerInterval);
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
-        ctx.fillText('ПОЗДРАВЛЯЮ! ', 50, canvas.height / 2, canvas.width / 2);
+        ctx.textAlign = 'center';
+        ctx.fillText('ПОЗДРАВЛЯЮ! ', canvas.height / 2, canvas.width / 2);
         return;
     }
     if (timeLeft === 0) {
