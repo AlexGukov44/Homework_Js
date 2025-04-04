@@ -75,8 +75,8 @@ function updatePlayer() {
 }
 
 function checkCollision() {
-    for (let i = dots.length - 1; i >= 0; i--) {
-    //for (let i = 0; i < dots.length; i++) {
+    //for (let i = dots.length - 1; i >= 0; i--) {
+    for (let i = 0; i < dots.length; i++) {
         const dot = dots[i];
         const distance = Math.sqrt(Math.pow(player.x - dot.x, 2) + Math.pow(player.y - dot.y, 2));
 
@@ -95,7 +95,7 @@ function startTimer() {
     startTime = Date.now();
     timerInterval = setInterval(() => {
         timeLeft = Math.max(0, 60 - Math.floor((Date.now() - startTime) / 1000));
-        timerDisplay.textContent = timeLeft;
+        timerDisplay.textContent = `таймер: ${(timeLeft)}`;
     }, 1000);
 }
 
@@ -119,6 +119,7 @@ function gameLoop() {
         clearInterval(timerInterval);
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
+        ctx.textAlign = 'center';
         ctx.fillText('Время вышло!', 50, canvas.height / 2, canvas.width / 2);
         return;
     }
