@@ -1,6 +1,7 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 const timerDisplay = document.getElementById('timer');
+const scoreDisplay = document.getElementById('score');
 
 function resizeCanvas() {
     canvas.width = window.innerWidth; 
@@ -35,6 +36,7 @@ const dots = [];
 let dotCount = 30;
 let dotRadius = 10;
 let dotColor = 'red';   //  #10375c
+let score = 0;
 
 function drawDots() {
     for (let i = 0; i < dots.length; i++) {
@@ -82,6 +84,8 @@ function checkCollision() {
 
         if (distance < player.radius + dot.radius) {
             dots.splice(i, 1);
+            score ++;
+            scoreDisplay.textContent = `очки: ${score}`;
             break;
         }
     }
@@ -112,7 +116,7 @@ function gameLoop() {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
         ctx.textAlign = 'center';
-        ctx.fillText('ПОЗДРАВЛЯЮ! ', canvas.height / 2, canvas.width / 2);
+        ctx.fillText('ПОЗДРАВЛЯЮ! ', canvas.height / 2, canvas.width / 2); 
         return;
     }
     if (timeLeft === 0) {
@@ -120,7 +124,7 @@ function gameLoop() {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
         ctx.textAlign = 'center';
-        ctx.fillText('Время вышло!', 50, canvas.height / 2, canvas.width / 2);
+        ctx.fillText('Время вышло!', canvas.height / 2, canvas.width / 2);
         return;
     }
 
@@ -162,6 +166,8 @@ function resetPlayerAndDots() {
     player.y = canvas.height / 2;
     dots.length = 0;
     createDots();
+    score = 0;
+    scoreDisplay.textContent = `очки: ${score}`;
     timeLeft = 30;
     clearInterval(timerInterval); 
     startTimer(); 
