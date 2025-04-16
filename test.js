@@ -1262,7 +1262,7 @@ scene.add(directionalLight);
 // отрисовка зеленой платформы 
 
 const playerGeometry = new THREE.BoxGeometry(1, 0.2, 1);       // (ширина, высота, глубина)
-const playerMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+const playerMaterial = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // задаем цвет
 const player = new THREE.Mesh(playerGeometry, playerMaterial);
 player.position.y = -3;
 scene.add(player);

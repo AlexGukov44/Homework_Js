@@ -116,6 +116,7 @@ function gameLoop() {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
         ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         ctx.fillText('ПОЗДРАВЛЯЮ! ', canvas.height / 2, canvas.width / 2); 
         return;
     }
@@ -124,6 +125,7 @@ function gameLoop() {
         ctx.fillStyle = '#fff';
         ctx.font = '40px Tahoma';
         ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         ctx.fillText('Время вышло!', canvas.height / 2, canvas.width / 2);
         return;
     }
