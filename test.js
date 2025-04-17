@@ -1237,7 +1237,7 @@ document.addEventListener('keyup', (event) => {
 
 gameLoop()
 
-*/
+
 
 // урок № 27
 
@@ -1350,5 +1350,48 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+animate();
+
+*/
+
+//  урок № 28
+
+// инициализация сцены 
+
+const scene = new THREE.Scene();
+
+//  камера 
+
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.set(0, 30, 50);
+
+//  рендер
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+
+
+// цилиндр 
+
+const geometry = new THREE.CylinderGeometry( 5, 5, 15, 10 ); 
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00, wireframe: true} ); 
+const cylinder = new THREE.Mesh( geometry, material ); 
+scene.add( cylinder );
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    cylinder.rotation.x += 0.01;
+    cylinder.rotation.y += 0.01;
+
+    const angle = Date.now() * 0.001;
+    camera.position.x = Math.cos(angle) * 5;
+    camera.position.z = Math.sin(angle) * 5;
+    camera.lookAt(cylinder.position); // ставим камеру по центру 
+
+    renderer.render(scene, camera);
+}
 
 animate();
