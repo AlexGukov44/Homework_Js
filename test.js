@@ -1396,7 +1396,6 @@ function animate() {
 
 animate();
 
-*/
 
 
 // урок № 29
@@ -1422,6 +1421,85 @@ renderer.shadowMap.enabled = true;    // поддержка теней
 
 const geometry = new THREE.CylinderGeometry( 1, 1, 3, 15 ); 
 const material = new THREE.MeshStandardMaterial( {color: 0xffff00} ); 
+const cylinder = new THREE.Mesh( geometry, material ); 
+cylinder.castShadow = true;          // для поддержки теней 
+cylinder.position.y = 1.5;
+scene.add( cylinder );
+
+// плоскость 
+
+const planeGeometry = new THREE.PlaneGeometry( 10, 10 );
+const planeMaterial = new THREE.MeshStandardMaterial( {color: 0xffffff} );
+const plane = new THREE.Mesh( planeGeometry, planeMaterial );
+plane.rotation.x = -Math.PI / 2;
+plane.position.y = -1.5;
+plane.receiveShadow = true;
+scene.add( plane );
+
+// свет напрвленый 
+
+const light = new THREE.DirectionalLight( 0xffffff, 1 );
+light.position.set( 5, 10, 5 );     // настройка напрвления света по координатам 
+light.castShadow = true;            // поддержка теней 
+
+light.shadow.mapSize.width = window.innerWidth;  // размер карты под свет ( вся ширина окна )
+light.shadow.mapSize.height = window.innerHeight; 
+scene.add(light);           //  добавление в сцену 
+
+// свет атмосферный 
+
+const ambientLight = new THREE.AmbientLight(0x404040);
+scene.add(ambientLight);
+
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    cylinder.rotation.x += 0.01;
+    cylinder.rotation.y += 0.01;
+
+    const angle = Date.now() * 0.001;
+    const radius = 8; 
+    camera.position.x = Math.cos(angle) * radius;
+    camera.position.y = 3;
+    camera.position.z = Math.sin(angle) * radius;
+    camera.lookAt(cylinder.position); // ставим камеру по центру 
+
+    renderer.render(scene, camera);
+}
+
+animate();
+*/
+
+
+
+// урок № 30
+
+
+// инициализация сцены 
+
+const scene = new THREE.Scene();
+
+//  камера 
+
+const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
+camera.position.set(0, 10, 50);
+
+//  рендер
+
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
+renderer.shadowMap.enabled = true;    // поддержка теней 
+
+// цилиндр 
+
+const geometry = new THREE.CylinderGeometry( 1, 1, 3, 15 ); 
+const material = new THREE.MeshStandardMaterial({
+        color: 0xffff00,
+        metalnes: 0.5,         // оба параметра от 0 до 1  
+        roughness: 0.5
+}); 
 const cylinder = new THREE.Mesh( geometry, material ); 
 cylinder.castShadow = true;          // для поддержки теней 
 cylinder.position.y = 1.5;
