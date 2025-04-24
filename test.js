@@ -1470,7 +1470,7 @@ function animate() {
 
 animate();
 
-*/
+
 
 // урок № 30
 
@@ -1548,7 +1548,7 @@ function animate() {
 
 animate();
 
-/*
+*/
 
 
 
@@ -1660,6 +1660,3 @@ function animate() {
 
     renderer.render(scene, camera);
 };
-
-
-*/
