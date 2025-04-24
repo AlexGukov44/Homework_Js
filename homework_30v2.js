@@ -8,8 +8,8 @@ document.body.appendChild(renderer.domElement);
 
 // Подключите текстуры
 
-const material = new THREE.MeshBasicMaterial( { map:texture } );
-const texture = new THREE.TextureLoader().load('https://raw.githubusercontent.com/timoxley/threejs/master/examples/textures/land_ocean_ice_cloud_2048.jpg' ); 
+const texture = new THREE.TextureLoader().load({color:'https://raw.githubusercontent.com/timoxley/threejs/master/examples/textures/land_ocean_ice_cloud_2048.jpg'} ); 
+const material = new THREE.MeshBasicMaterial( { map: texture } );
 const geometry = new THREE.SphereGeometry(3, 32, 32);
 const sphere = new THREE.Mesh(geometry, material);
 scene.add(sphere);
