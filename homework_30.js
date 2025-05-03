@@ -14,114 +14,56 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 renderer.shadowMap.enabled = true;    // поддержка теней 
 
-// круг № 1
+// состав кпугов по составу 
+// материал
 
-const geometry_1 = new THREE.CircleGeometry( 5, 32 ); 
-const material_1 = new THREE.MeshBasicMaterial( { 
-    color: 0x0000FF
- } ); 
-const circle_1 = new THREE.Mesh( geometry_1, material_1 );
-circle_1.position.set( -15, 15, 0 );
-circle_1.castShadow = true;
-scene.add( circle_1 );
+const materials = [
+    new THREE.MeshBasicMaterial({ 
+        color: 0x0000FF 
+    }),
+    new THREE.MeshLambertMaterial({ 
+        color: 0x0000FF 
+    }),
+    new THREE.MeshPhongMaterial({ 
+        color: 0x0000FF 
+    }),
+    new THREE.MeshPhongMaterial({ 
+        color: 0x0000FF, shininess: 0 
+    }),
+    new THREE.MeshPhongMaterial({ 
+        color: 0x0000FF, shininess: 30
+     }),
+    new THREE.MeshPhongMaterial({ 
+        color: 0x0000FF, shininess: 150 
+    }),
+    new THREE.MeshStandardMaterial({ 
+        color: 0x0000FF, roughness: 0, metalness: 0 
+    }),
+    new THREE.MeshStandardMaterial({ 
+        color: 0x0000FF, roughness: 0.5, metalness: 0.5 
+    }),
+    new THREE.MeshStandardMaterial({ 
+        color: 0x0000FF, roughness: 1, metalness: 1 
+    }),
+];
 
-// круг № 2
+// форма ( круг )   и позиция в прастранстве 
 
-const geometry_2 = new THREE.CircleGeometry( 5, 32 ); 
-const material_2 = new THREE.MeshLambertMaterial( { 
-    color: 0x0000FF
- } ); 
-const circle_2 = new THREE.Mesh( geometry_2, material_2 );
-circle_2.position.set( -5, 15, 0 );
-circle_2.castShadow = true;
-scene.add( circle_2 );
+const geometry = new THREE.CircleGeometry(5, 32);
+const positions = [
+    [-15, 15], [-5, 15], [5, 15],
+    [-15, 5], [-5, 5], [5, 5],
+    [-15, -5], [-5, -5], [5, -5]
+];
 
-// круг № 3
+// цикл для подбррки материала под позицию
 
-const geometry_3 = new THREE.CircleGeometry( 5, 32 ); 
-const material_3 = new THREE.MeshPhongMaterial( { 
-    color: 0x0000FF
- } ); 
-const circle_3 = new THREE.Mesh( geometry_3, material_3 ); 
-circle_3.position.set( 5, 15, 0 );
-circle_3.castShadow = true;
-scene.add( circle_3 );
-
-// круг № 4
-
-const geometry_4 = new THREE.CircleGeometry( 5, 32 ); 
-const material_4 = new THREE.MeshPhongMaterial( { 
-    color: 0x0000FF,
-    shininess: 0
- } ); 
-const circle_4 = new THREE.Mesh( geometry_4, material_4 ); 
-circle_4.position.set( -15, 5, 0 );
-circle_4.castShadow = true;
-scene.add( circle_4 );
-
-// круг № 5
-
-const geometry_5 = new THREE.CircleGeometry( 5, 32 ); 
-const material_5 = new THREE.MeshPhongMaterial( { 
-    color: 0x0000FF,
-    shininess: 30
- } ); 
-const circle_5 = new THREE.Mesh( geometry_5, material_5 );
-circle_5.position.set( -5, 5, 0 );
-circle_5.castShadow = true;
-scene.add( circle_5 );
-
-// круг № 6
-
-const geometry_6 = new THREE.CircleGeometry( 5, 32 ); 
-const material_6 = new THREE.MeshPhongMaterial( { 
-    color: 0x0000FF,
-    shininess: 150
- } ); 
-const circle_6 = new THREE.Mesh( geometry_6, material_6 ); 
-circle_6.position.set( 5, 5, 0 );
-circle_6.castShadow = true;
-scene.add( circle_6 );
-
-// круг № 7
-
-const geometry_7 = new THREE.CircleGeometry( 5, 32 ); 
-const material_7 = new THREE.MeshBasicMaterial( { 
-    color: 0x0000FF,
-    roughness: 0,
-    metalness: 0
- } ); 
-const circle_7 = new THREE.Mesh( geometry_7, material_7 ); 
-circle_7.position.set( -15, -5, 0 );
-circle_7.castShadow = true;
-scene.add( circle_7 );
-
-// круг № 8
-
-const geometry_8 = new THREE.CircleGeometry( 5, 32 ); 
-const material_8 = new THREE.MeshBasicMaterial( { 
-    color: 0x0000FF,
-    roughness: 0.5,
-    metalness: 0.5
- } ); 
-const circle_8 = new THREE.Mesh( geometry_8, material_8 );
-circle_8.position.set( -5, -5, 0 );
-circle_8.castShadow = true;
-scene.add( circle_8 );
-
-// круг № 9
-
-const geometry_9 = new THREE.CircleGeometry( 5, 32 ); 
-const material_9 = new THREE.MeshBasicMaterial( { 
-    color: 0x0000FF,
-    roughness: 1,
-    metalness: 1
- } ); 
-const circle_9 = new THREE.Mesh( geometry_9, material_9 );
-circle_9.position.set( 5, -5, 0);
-circle_9.castShadow = true;
-scene.add( circle_9 );
-
+materials.forEach((material, index) => {
+    const circle = new THREE.Mesh(geometry, material);
+    circle.position.set(positions[index][0], positions[index][1], 0);
+    circle.castShadow = true;
+    scene.add(circle);
+});
 
 // свет напрвленый 
 

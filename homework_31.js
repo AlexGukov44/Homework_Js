@@ -70,7 +70,7 @@ playButton.addEventListener('click', () => {
 audioLoader.load( 'https://cdn.freesound.org/previews/788/788539_1648170-lq.ogg', function( buffer ) {
 	sound.setBuffer( buffer );
 	sound.setLoop( true );
-	sound.setVolume( 0.5 );
+	sound.setVolume( 1 );
 });
 
 // фигура 
@@ -88,7 +88,12 @@ heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
 heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
 
 const geometry = new THREE.ShapeGeometry( heartShape );
-const material = new THREE.MeshBasicMaterial( { color: 0xff0000, side: THREE.DoubleSide } );
+const material = new THREE.MeshStandardMaterial( { 
+    color: 0xff0000,
+    metalnes: 0.5,
+    roughness: 0.5,
+    side: THREE.DoubleSide
+} );
 const mesh = new THREE.Mesh( geometry, material ) ;
 mesh.scale.set(0.05, 0.05, 0.05);
 mesh.castShadow = true;
